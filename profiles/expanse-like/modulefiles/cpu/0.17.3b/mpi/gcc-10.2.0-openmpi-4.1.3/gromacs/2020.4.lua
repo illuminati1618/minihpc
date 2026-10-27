@@ -1,0 +1,5 @@
+whatis("Name: gromacs")
+whatis("Version: 2020.4")
+whatis("Description: GROMACS, a molecular dynamics package")
+setenv("GROMACS_HOME", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0/openmpi-4.1.3/gromacs-2020.4")
+prepend_path("PATH", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0/openmpi-4.1.3/gromacs-2020.4/bin")

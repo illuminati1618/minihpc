@@ -1,0 +1,7 @@
+whatis("Name: openmpi")
+whatis("Version: 4.1.3")
+whatis("Description: Open MPI, an open source Message Passing Interface implementation")
+family("mpi")
+setenv("OPENMPI_HOME", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0/openmpi-4.1.3")
+prepend_path("PATH", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0/openmpi-4.1.3/bin")
+prepend_path("MODULEPATH", "/opt/modulefiles/cpu/0.17.3b/mpi/gcc-10.2.0-openmpi-4.1.3")

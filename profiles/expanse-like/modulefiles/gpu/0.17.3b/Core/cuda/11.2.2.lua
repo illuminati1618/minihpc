@@ -1,0 +1,5 @@
+whatis("Name: cuda")
+whatis("Version: 11.2.2")
+whatis("Description: NVIDIA CUDA toolkit")
+setenv("CUDA_HOME", "/opt/software/spack/0.17.3b/gpu/cuda-11.2.2")
+prepend_path("PATH", "/opt/software/spack/0.17.3b/gpu/cuda-11.2.2/bin")

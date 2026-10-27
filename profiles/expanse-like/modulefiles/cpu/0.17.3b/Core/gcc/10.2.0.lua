@@ -1,0 +1,7 @@
+whatis("Name: gcc")
+whatis("Version: 10.2.0")
+whatis("Description: The GNU Compiler Collection")
+family("compiler")
+setenv("GCC_HOME", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0")
+prepend_path("PATH", "/opt/software/spack/0.17.3b/cpu/gcc-10.2.0/bin")
+prepend_path("MODULEPATH", "/opt/modulefiles/cpu/0.17.3b/gcc/10.2.0")

@@ -1,0 +1,6 @@
+help([[Spack-built software stack for CPU nodes.]])
+whatis("Name: cpu")
+whatis("Version: 0.17.3b")
+whatis("Description: CPU software stack (compilers, MPI and applications built for CPU nodes)")
+family("stack")
+prepend_path("MODULEPATH", "/opt/modulefiles/cpu/0.17.3b/Core")

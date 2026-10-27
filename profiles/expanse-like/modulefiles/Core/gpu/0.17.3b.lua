@@ -1,0 +1,6 @@
+help([[Spack-built software stack for GPU nodes.]])
+whatis("Name: gpu")
+whatis("Version: 0.17.3b")
+whatis("Description: GPU software stack (compilers, MPI and applications built for GPU nodes)")
+family("stack")
+prepend_path("MODULEPATH", "/opt/modulefiles/gpu/0.17.3b/Core")
