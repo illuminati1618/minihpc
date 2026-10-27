@@ -49,4 +49,19 @@ RUN mkdir -p /etc/lmod && echo /opt/modulefiles/Core > /etc/lmod/.modulespath \
 COPY slurm/ /opt/slurm/
 RUN chmod +x /opt/slurm/bin/*
 
+# ---- user, home, and Lustre-style scratch ----
+RUN useradd -m -u "${UID}" "${USERNAME}" \
+ && mkdir -p "/expanse/lustre/scratch/${USERNAME}/temp_project" "/expanse/lustre/projects" \
+ && chown -R "${USERNAME}" "/expanse/lustre/scratch/${USERNAME}"
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+
+# ---- user state: Miniforge in $HOME, conda init, and one env on Lustre scratch ----
+RUN curl -fsSL -o /tmp/miniforge.sh \
+      "https://github.com/conda-forge/miniforge/releases/download/${MINIFORGE_VERSION}/Miniforge3-${MINIFORGE_VERSION}-Linux-x86_64.sh" \
+ && bash /tmp/miniforge.sh -b -p "${HOME}/miniforge3" && rm /tmp/miniforge.sh \
+ && "${HOME}/miniforge3/bin/conda" create -y -q -p "/expanse/lustre/scratch/${USERNAME}/temp_project/envs/analysis" python=3.11 numpy \
+ && "${HOME}/miniforge3/bin/conda" init bash >/dev/null \
+ && "${HOME}/miniforge3/bin/conda" clean -y -q --tarballs
+
 CMD ["sleep", "infinity"]
