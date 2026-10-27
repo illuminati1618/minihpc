@@ -1,0 +1,5 @@
+#!/bin/bash
+here=$(dirname "$(readlink -f "$0")")
+for a in "$@"; do case "$a" in -V|--version) echo "slurm 23.02.7"; exit 0;; esac; done
+printf '%-13s %-5s %-10s %5s %-5s %s\n' PARTITION AVAIL TIMELIMIT NODES STATE NODELIST
+while IFS=$'\t' read -r p a t n s l; do printf '%-13s %-5s %-10s %5s %-5s %s\n' "$p" "$a" "$t" "$n" "$s" "$l"; done < "$here/../etc/partitions.tsv"

@@ -1,0 +1,3 @@
+#!/bin/bash
+printf '%-12s %-10s %-10s %-10s %-10s %-10s %-8s\n' JobID JobName Partition Account AllocCPUS State ExitCode
+printf '%-12s %-10s %-10s %-10s %-10s %-10s %-8s\n' ------------ ---------- ---------- ---------- ---------- ---------- --------

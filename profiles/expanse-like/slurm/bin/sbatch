@@ -1,0 +1,8 @@
+#!/bin/bash
+part=debug; test=0
+while [ $# -gt 0 ]; do case "$1" in
+  --test-only) test=1;; -p) part=$2; shift;; --partition=*) part=${1#*=};; --partition) part=$2; shift;;
+esac; shift; done
+id=$(( 4000000 + RANDOM ))
+if [ $test = 1 ]; then echo "sbatch: Job $id to start at $(date +%Y-%m-%dT%H:%M:%S) using 1 processors on nodes exp-9-55 in partition $part" >&2
+else echo "Submitted batch job $id"; fi

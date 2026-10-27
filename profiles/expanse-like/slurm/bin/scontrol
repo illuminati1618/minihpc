@@ -1,0 +1,7 @@
+#!/bin/bash
+here=$(dirname "$(readlink -f "$0")")
+if [ "$1" = show ] && [ "$2" = partition ]; then
+  while IFS=$'\t' read -r p a t n s l; do p=${p%\*}; [ -n "$3" ] && [ "$3" != "$p" ] && continue
+    echo "PartitionName=$p"; echo "   State=UP TotalNodes=$n MaxTime=$t Nodes=$l"; echo; done < "$here/../etc/partitions.tsv"
+elif [ "$1" = show ] && [ "$2" = job ]; then echo "slurm_load_jobs error: Invalid job id specified" >&2; exit 1
+else echo "scontrol: error: Invalid command or not supported here" >&2; exit 1; fi

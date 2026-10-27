@@ -45,4 +45,8 @@ RUN mkdir -p /etc/lmod && echo /opt/modulefiles/Core > /etc/lmod/.modulespath \
  && { [ -e /etc/profile.d/modules.sh ] || ln -s /usr/share/lmod/lmod/init/profile /etc/profile.d/modules.sh; } \
  && grep -rhoE '"/opt/software/[^"]+"' /opt/modulefiles | tr -d '"' | sort -u | xargs mkdir -p
 
+# ---- Slurm client commands (no scheduler runs here) ----
+COPY slurm/ /opt/slurm/
+RUN chmod +x /opt/slurm/bin/*
+
 CMD ["sleep", "infinity"]

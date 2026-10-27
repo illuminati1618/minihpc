@@ -1,0 +1,9 @@
+#!/bin/bash
+id=$(( 4000000 + RANDOM ))
+echo "salloc: Granted job allocation $id" >&2
+withval='^-(p|A|N|n|c|t|J|G|w|C|q)$|^--(partition|account|nodes|ntasks|cpus-per-task|time|mem|gpus|gres|job-name|qos|constraint)$'
+while [ $# -gt 0 ]; do
+  if [[ "$1" =~ $withval ]]; then shift 2; elif [[ "$1" == -* ]]; then shift; else break; fi
+done
+SLURM_JOB_ID=$id "${@:-${SHELL:-bash}}"; rc=$?
+echo "salloc: Relinquishing job allocation $id" >&2; exit $rc

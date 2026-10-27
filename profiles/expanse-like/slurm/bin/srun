@@ -1,0 +1,7 @@
+#!/bin/bash
+withval='^-(p|A|N|n|c|t|J|o|e|G|w|C|q)$|^--(partition|account|nodes|ntasks|ntasks-per-node|cpus-per-task|time|mem|mem-per-cpu|gpus|gres|job-name|qos|constraint)$'
+while [ $# -gt 0 ]; do
+  if [[ "$1" =~ $withval ]]; then shift 2; elif [[ "$1" == -* ]]; then shift; else break; fi
+done
+[ $# -eq 0 ] && { echo "srun: fatal: No command given to execute." >&2; exit 1; }
+exec "$@"
