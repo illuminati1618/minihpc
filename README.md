@@ -5,6 +5,9 @@ software hierarchy, its scheduler commands, its filesystems, and a user's home w
 for **testing AI agents and agent skills** that run shell commands on HPC systems, without spending
 allocation or touching a real account.
 
+minihpc is not an official SDSC product and is not supported or endorsed by SDSC. The expanse-like profile
+is a representative look-alike, not a copy of the real system.
+
 A *profile* is one system. Each profile is a directory under `profiles/` with a Dockerfile and a smoke test.
 
 | Profile | Looks like | Module system | Scheduler | Status |
@@ -43,3 +46,7 @@ per profile), and `[minihpc] ...` for changes to the repository as a whole (docs
 Conventions follow Lmod's documentation for site setup and Docker's Dockerfile best practices; the layout
 (per-profile image, Makefile, smoke test) follows existing Slurm-in-Docker projects. Sources and what each was
 used for: [REFERENCES.md](REFERENCES.md).
+
+## License
+
+MIT, see [LICENSE](LICENSE).
